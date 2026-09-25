@@ -1,0 +1,91 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+    --color-nesel-navy: #061832;
+    --color-nesel-red: #e30613;
+    --color-nesel-gold: #f2b63d;
+    --color-nesel-ivory: #f7f5f1;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        min-width: 320px;
+    }
+
+    ::selection {
+        background: var(--color-nesel-red);
+        color: white;
+    }
+}
+
+@layer components {
+    .section-kicker {
+        @apply text-xs font-black uppercase tracking-[0.2em] text-nesel-red;
+    }
+
+    .section-title {
+        @apply max-w-2xl text-4xl font-black leading-[1.02] tracking-[-0.045em] text-nesel-navy sm:text-5xl;
+    }
+
+    .service-item {
+        @apply relative flex min-h-72 flex-col gap-5 border-b border-slate-300 p-7 sm:p-9;
+    }
+
+    .service-item h3 {
+        @apply mt-auto text-xl font-extrabold tracking-tight text-nesel-navy;
+    }
+
+    .service-item p {
+        @apply text-sm leading-6 text-slate-500;
+    }
+
+    .service-number {
+        @apply absolute right-7 top-8 text-xs font-black tracking-[0.15em] text-slate-300 sm:right-9;
+    }
+
+    .step-row {
+        @apply grid grid-cols-[3rem_1fr] gap-5 py-8 sm:grid-cols-[5rem_1fr] sm:py-10;
+    }
+
+    .step-row > span {
+        @apply pt-1 text-xs font-black tracking-[0.15em] text-nesel-red;
+    }
+
+    .step-row h3 {
+        @apply text-xl font-extrabold tracking-tight;
+    }
+
+    .step-row p {
+        @apply mt-2 text-sm leading-6 text-slate-400;
+    }
+
+    .field-label {
+        @apply flex flex-col gap-2 text-xs font-black uppercase tracking-[0.12em] text-nesel-navy;
+    }
+
+    .field-input {
+        @apply min-h-12 w-full rounded-md border border-slate-300 bg-white px-4 py-3 text-sm font-normal normal-case tracking-normal text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-nesel-red focus:ring-2 focus:ring-red-100;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    [data-reveal] {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 700ms ease, transform 700ms ease;
+    }
+
+    [data-reveal].is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
