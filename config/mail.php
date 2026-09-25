@@ -1,5 +1,12 @@
 <?php
 
+$smtpPort = env('SMTP_PORT', env('MAIL_PORT', 2525));
+$smtpScheme = env('SMTP_SCHEME', env('MAIL_SCHEME'));
+
+if ($smtpScheme === null && (int) $smtpPort === 465) {
+    $smtpScheme = 'smtps';
+}
+
 return [
 
     /*
@@ -14,7 +21,7 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'log'),
+    'default' => env('SMTP_HOST') ? 'smtp' : env('MAIL_MAILER', 'log'),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,12 +46,12 @@ return [
 
         'smtp' => [
             'transport' => 'smtp',
-            'scheme' => env('MAIL_SCHEME'),
+            'scheme' => $smtpScheme,
             'url' => env('MAIL_URL'),
-            'host' => env('MAIL_HOST', '127.0.0.1'),
-            'port' => env('MAIL_PORT', 2525),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
+            'host' => env('SMTP_HOST', env('MAIL_HOST', '127.0.0.1')),
+            'port' => $smtpPort,
+            'username' => env('SMTP_USER', env('MAIL_USERNAME')),
+            'password' => env('SMTP_PASSWORD', env('MAIL_PASSWORD')),
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url((string) env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
         ],
@@ -111,8 +118,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', env('APP_NAME', 'Laravel')),
+        'address' => env('CONTACT_FROM_EMAIL', env('MAIL_FROM_ADDRESS', 'hello@example.com')),
+        'name' => env('MAIL_FROM_NAME', env('APP_NAME', 'Nesel')),
     ],
 
 ];

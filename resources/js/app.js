@@ -29,23 +29,13 @@ document.querySelectorAll('.city-choice').forEach((button) => {
     });
 });
 
-const callbackForm = document.querySelector('#callback-form');
 const formSuccess = document.querySelector('#form-success');
 
-callbackForm?.addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    if (!(callbackForm instanceof HTMLFormElement) || !callbackForm.reportValidity()) {
-        return;
-    }
-
-    formSuccess?.classList.remove('hidden');
-    callbackForm.reset();
-
+if (formSuccess) {
     window.setTimeout(() => {
         formSuccess?.classList.add('hidden');
-    }, 5000);
-});
+    }, 7000);
+}
 
 const revealObserver = new IntersectionObserver(
     (entries, observer) => {

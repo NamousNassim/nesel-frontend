@@ -225,27 +225,47 @@
                         </div>
                     </div>
 
-                    <form id="callback-form" class="bg-white p-6 shadow-[0_24px_80px_rgba(6,24,50,0.12)] sm:p-10" data-reveal>
+                    <form id="callback-form" method="POST" action="{{ route('contact-requests.store') }}" class="bg-white p-6 shadow-[0_24px_80px_rgba(6,24,50,0.12)] sm:p-10" data-reveal>
+                        @csrf
+
+                        @if ($errors->any())
+                            <div class="mb-6 border-l-4 border-nesel-red bg-red-50 px-4 py-3 text-sm text-red-800" role="alert">
+                                Veuillez corriger les informations indiquées ci-dessous.
+                            </div>
+                        @endif
+
                         <div class="grid gap-6 sm:grid-cols-2">
                             <label class="field-label sm:col-span-2">
                                 Nom complet
-                                <input type="text" name="name" required autocomplete="name" placeholder="Votre nom" class="field-input">
+                                <input type="text" name="name" value="{{ old('name') }}" required maxlength="100" autocomplete="name" placeholder="Votre nom" class="field-input @error('name') border-nesel-red @enderror" aria-describedby="name-error">
+                                @error('name')
+                                    <span id="name-error" class="normal-case tracking-normal text-red-700">{{ $message }}</span>
+                                @enderror
                             </label>
                             <label class="field-label">
                                 Téléphone
-                                <input type="tel" name="phone" required autocomplete="tel" placeholder="+212 6 00 00 00 00" class="field-input">
+                                <input type="tel" name="phone" value="{{ old('phone') }}" required maxlength="30" autocomplete="tel" placeholder="+212 6 00 00 00 00" class="field-input @error('phone') border-nesel-red @enderror" aria-describedby="phone-error">
+                                @error('phone')
+                                    <span id="phone-error" class="normal-case tracking-normal text-red-700">{{ $message }}</span>
+                                @enderror
                             </label>
                             <label class="field-label">
                                 Ville souhaitée
-                                <select id="city-select" name="city" required class="field-input">
+                                <select id="city-select" name="city" required class="field-input @error('city') border-nesel-red @enderror" aria-describedby="city-error">
                                     <option value="">Sélectionner</option>
-                                    <option value="Marrakech">Marrakech</option>
-                                    <option value="Casablanca">Casablanca</option>
+                                    <option value="Marrakech" @selected(old('city') === 'Marrakech')>Marrakech</option>
+                                    <option value="Casablanca" @selected(old('city') === 'Casablanca')>Casablanca</option>
                                 </select>
+                                @error('city')
+                                    <span id="city-error" class="normal-case tracking-normal text-red-700">{{ $message }}</span>
+                                @enderror
                             </label>
                             <label class="field-label sm:col-span-2">
                                 Votre besoin
-                                <textarea name="message" rows="3" placeholder="Création d’entreprise, transfert de siège…" class="field-input resize-none"></textarea>
+                                <textarea name="message" rows="3" maxlength="2000" placeholder="Création d’entreprise, transfert de siège…" class="field-input resize-none @error('message') border-nesel-red @enderror" aria-describedby="message-error">{{ old('message') }}</textarea>
+                                @error('message')
+                                    <span id="message-error" class="normal-case tracking-normal text-red-700">{{ $message }}</span>
+                                @enderror
                             </label>
                         </div>
                         <button type="submit" class="mt-7 inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-md bg-nesel-red px-7 text-sm font-bold text-white transition hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-nesel-red focus:ring-offset-2">
@@ -269,8 +289,10 @@
             </div>
         </footer>
 
-        <div id="form-success" class="fixed bottom-5 left-5 right-5 z-[60] hidden border-l-4 border-emerald-500 bg-nesel-navy px-5 py-4 text-sm font-semibold text-white shadow-2xl sm:left-auto sm:w-[380px]" role="status" aria-live="polite">
-            Merci ! Votre demande est prête. L’équipe Nesel pourra vous recontacter rapidement.
-        </div>
+        @if (session('contact_success'))
+            <div id="form-success" class="fixed bottom-5 left-5 right-5 z-[60] border-l-4 border-emerald-500 bg-nesel-navy px-5 py-4 text-sm font-semibold text-white shadow-2xl sm:left-auto sm:w-[420px]" role="status" aria-live="polite">
+                {{ session('contact_success') }}
+            </div>
+        @endif
     </body>
 </html>

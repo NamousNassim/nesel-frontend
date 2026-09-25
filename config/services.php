@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'contact' => [
+        'recipient' => env('CONTACT_RECIPIENT_EMAIL', 'majd.chraibi@gmail.com'),
+    ],
+
 ];
