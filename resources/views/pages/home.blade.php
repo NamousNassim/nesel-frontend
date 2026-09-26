@@ -52,45 +52,44 @@
         </div>
     </div>
 
-    <section id="services" class="scroll-mt-24 py-24 sm:py-32">
+    <section id="services" class="scroll-mt-24 bg-nesel-ivory py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-            <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-                <div data-reveal>
-                    <p class="section-kicker">Votre quotidien, simplifié</p>
-                    <h2 class="section-title mt-4">Bien plus qu’une adresse.</h2>
-                    <p class="mt-6 max-w-md text-base leading-7 text-slate-600">Nesel prend en charge l’essentiel pour vous laisser avancer sur ce qui compte : votre activité.</p>
-                    <a href="{{ route('services') }}" class="mt-8 inline-flex items-center gap-2 border-b border-nesel-red pb-1 text-sm font-bold text-nesel-red transition hover:text-red-700">
+            <div class="flex flex-col justify-between gap-8 lg:flex-row lg:items-end" data-reveal>
+                <x-section-heading eyebrow="Votre quotidien, simplifié" title="Bien plus qu’une adresse." description="Nesel prend en charge l’essentiel pour vous laisser avancer sur ce qui compte : votre activité." />
+                <a href="{{ route('services') }}" class="group inline-flex items-center gap-2 self-start border-b border-nesel-red pb-1 text-sm font-bold text-nesel-red transition hover:text-red-700 lg:self-auto">
                         Découvrir tous nos services
-                        <span aria-hidden="true">→</span>
-                    </a>
-                </div>
+                    <span class="transition group-hover:translate-x-1" aria-hidden="true">→</span>
+                </a>
+            </div>
 
-                <div class="grid border-t border-slate-300 sm:grid-cols-2" data-reveal>
-                    <article class="service-item sm:border-r sm:border-slate-300">
-                        <span class="service-number">01</span>
-                        <svg class="size-8 text-nesel-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 10h2m2 0h2m-6 4h2m2 0h2m-6 7v-3h6v3" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                        <h3>Une adresse crédible</h3>
-                        <p>Installez le siège de votre entreprise dans un environnement professionnel à Marrakech ou Casablanca.</p>
+            <div class="mt-14 grid gap-5 lg:grid-cols-12" data-reveal>
+                    <article class="group relative overflow-hidden bg-nesel-navy p-8 text-white shadow-[0_24px_80px_rgba(6,24,50,0.12)] sm:p-10 lg:col-span-7 lg:row-span-2 lg:min-h-[520px]">
+                        <div class="premium-grid absolute inset-0 opacity-20" aria-hidden="true"></div>
+                        <div class="relative flex h-full flex-col">
+                            <div class="flex items-start justify-between gap-6">
+                                <span class="flex size-14 items-center justify-center border border-white/15 bg-white/[0.06] text-nesel-gold"><x-service-icon name="building" /></span>
+                                <span class="text-xs font-black tracking-[0.18em] text-white/30">01</span>
+                            </div>
+                            <div class="mt-auto pt-20">
+                                <p class="text-xs font-black uppercase tracking-[0.18em] text-nesel-gold">Domiciliation</p>
+                                <h3 class="mt-4 max-w-lg text-3xl font-black tracking-[-0.045em] sm:text-4xl">Une adresse professionnelle qui installe votre crédibilité.</h3>
+                                <p class="mt-5 max-w-lg text-base leading-7 text-white/65">Installez le siège de votre entreprise à Marrakech ou Casablanca, avec les documents et l’accompagnement nécessaires.</p>
+                                <a href="{{ route('services') }}#domiciliation" class="mt-8 inline-flex items-center gap-2 text-sm font-bold text-white">Découvrir la domiciliation <span class="transition group-hover:translate-x-1" aria-hidden="true">→</span></a>
+                            </div>
+                        </div>
                     </article>
-                    <article class="service-item">
-                        <span class="service-number">02</span>
-                        <svg class="size-8 text-nesel-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m3 7 9 6 9-6M5 5h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                        <h3>Votre courrier suivi</h3>
-                        <p>Nous réceptionnons vos plis et vous tenons informé pour que rien d’important ne vous échappe.</p>
+
+                    <article class="group border border-slate-200 bg-white p-7 transition hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(6,24,50,0.09)] sm:p-8 lg:col-span-5">
+                        <div class="flex items-start justify-between gap-5"><span class="flex size-11 items-center justify-center bg-red-50 text-nesel-red"><x-service-icon name="mail" class="size-6" /></span><span class="text-xs font-black text-slate-300">02</span></div>
+                        <h3 class="mt-8 text-xl font-black tracking-tight text-nesel-navy">Votre courrier suivi</h3>
+                        <p class="mt-3 text-sm leading-6 text-slate-600">Réception, notification, numérisation et transmission : vous gardez la visibilité où que vous soyez.</p>
                     </article>
-                    <article class="service-item border-b-0 sm:border-r sm:border-slate-300">
-                        <span class="service-number">03</span>
-                        <svg class="size-8 text-nesel-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M8 12h8m-8 4h5M9 3h6l4 4v14H5V3h4Zm5 0v5h5" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                        <h3>Des démarches plus claires</h3>
-                        <p>Une équipe locale vous guide dans les étapes administratives liées à votre domiciliation.</p>
+
+                    <article class="group border border-slate-200 bg-white p-7 transition hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(6,24,50,0.09)] sm:p-8 lg:col-span-5">
+                        <div class="flex items-start justify-between gap-5"><span class="flex size-11 items-center justify-center bg-red-50 text-nesel-red"><x-service-icon name="briefcase" class="size-6" /></span><span class="text-xs font-black text-slate-300">03</span></div>
+                        <h3 class="mt-8 text-xl font-black tracking-tight text-nesel-navy">Des démarches plus claires</h3>
+                        <p class="mt-3 text-sm leading-6 text-slate-600">Création, formalités et suivi administratif : une équipe locale vous guide dans les étapes clés.</p>
                     </article>
-                    <article class="service-item border-b-0">
-                        <span class="service-number">04</span>
-                        <svg class="size-8 text-nesel-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M8 10h.01M12 10h.01M16 10h.01M21 11.5a8.5 8.5 0 1 1-3.1-6.56M21 4v6h-6" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                        <h3>Une équipe accessible</h3>
-                        <p>Des réponses rapides, un interlocuteur identifiable et une relation sans jargon inutile.</p>
-                    </article>
-                </div>
             </div>
         </div>
     </section>
@@ -141,25 +140,32 @@
         </div>
     </section>
 
-    <section id="offres" class="scroll-mt-24 py-24 sm:py-32">
+    <section id="offres" class="scroll-mt-24 bg-nesel-ivory py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-            <div class="flex flex-col justify-between gap-6 sm:flex-row sm:items-end" data-reveal>
-                <div>
-                    <p class="section-kicker">Nos offres</p>
-                    <h2 class="section-title mt-4">Trois niveaux de service, selon vos besoins.</h2>
-                </div>
-                <a href="{{ route('offers') }}" class="inline-flex items-center gap-2 border-b border-nesel-red pb-1 text-sm font-bold text-nesel-red transition hover:text-red-700">
+            <div class="flex flex-col justify-between gap-8 lg:flex-row lg:items-end" data-reveal>
+                <x-section-heading eyebrow="Nos offres" title="Trois niveaux de service, selon vos besoins." description="De l’essentiel à une gestion plus complète, chaque offre adapte l’accompagnement à la réalité de votre entreprise." />
+                <a href="{{ route('offers') }}" class="group inline-flex items-center gap-2 self-start border-b border-nesel-red pb-1 text-sm font-bold text-nesel-red transition hover:text-red-700 lg:self-auto">
                     Comparer les offres
-                    <span aria-hidden="true">→</span>
+                    <span class="transition group-hover:translate-x-1" aria-hidden="true">→</span>
                 </a>
             </div>
 
-            <div class="mt-14 grid gap-px border border-slate-300 bg-slate-300 md:grid-cols-3" data-reveal>
+            <div class="mt-14 grid items-stretch gap-5 md:grid-cols-3" data-reveal>
                 @foreach (\App\Support\Catalog::offers() as $offer)
-                    <article class="bg-nesel-ivory p-7 sm:p-9">
-                        <h3 class="text-2xl font-black tracking-[-0.04em]">{{ $offer['name'] }}</h3>
-                        <p class="mt-1 text-sm font-bold text-nesel-red">{{ $offer['subtitle'] }}</p>
-                        <p class="mt-4 text-sm leading-6 text-slate-600">{{ $offer['teaser'] }}</p>
+                    <article @class([
+                        'group relative flex flex-col overflow-hidden border p-7 transition hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(6,24,50,0.1)] sm:p-9',
+                        'border-slate-200 bg-white' => $offer['name'] === 'Silver',
+                        'border-nesel-gold/70 bg-[#fffdf7] ring-1 ring-nesel-gold/20 md:-translate-y-3 md:hover:-translate-y-4' => $offer['name'] === 'Golden',
+                        'border-nesel-navy bg-nesel-navy text-white' => $offer['name'] === 'Diamond',
+                    ])>
+                        <div @class(['absolute inset-x-0 top-0 h-1', 'bg-slate-400' => $offer['name'] === 'Silver', 'bg-nesel-gold' => $offer['name'] === 'Golden', 'bg-nesel-red' => $offer['name'] === 'Diamond']) aria-hidden="true"></div>
+                        <p @class(['text-xs font-black uppercase tracking-[0.16em]', 'text-slate-400' => $offer['name'] === 'Silver', 'text-[#8c6500]' => $offer['name'] === 'Golden', 'text-nesel-gold' => $offer['name'] === 'Diamond'])>
+                            {{ $offer['name'] === 'Silver' ? 'Essentiel' : ($offer['name'] === 'Golden' ? 'Équilibre' : 'Premium') }}
+                        </p>
+                        <h3 class="mt-5 text-3xl font-black tracking-[-0.04em]">{{ $offer['name'] }}</h3>
+                        <p @class(['mt-3 text-sm font-bold leading-6', 'text-nesel-red' => $offer['name'] !== 'Diamond', 'text-white' => $offer['name'] === 'Diamond'])>{{ $offer['subtitle'] }}</p>
+                        <p @class(['mt-5 text-sm leading-6', 'text-slate-600' => $offer['name'] !== 'Diamond', 'text-white/60' => $offer['name'] === 'Diamond'])>{{ $offer['teaser'] }}</p>
+                        <a href="{{ route('offers') }}#offre-{{ strtolower($offer['name']) }}" @class(['mt-8 inline-flex items-center gap-2 text-sm font-bold', 'text-nesel-red' => $offer['name'] !== 'Diamond', 'text-white' => $offer['name'] === 'Diamond'])>Voir l’offre <span class="transition group-hover:translate-x-1" aria-hidden="true">→</span></a>
                     </article>
                 @endforeach
             </div>

@@ -30,6 +30,7 @@ class ServicesAndOffersPagesTest extends TestCase
                 'Secrétariat et accompagnement administratif',
                 'Services complémentaires pour investisseurs et entrepreneurs',
             ])
+            ->assertSeeInOrder(['Opérations', 'Espaces professionnels', 'Accompagnement business'])
             ->assertSee('href="'.route('offers').'"', false)
             ->assertSee('Découvrir nos offres de domiciliation')
             ->assertSee(route('home', ['ville' => 'Marrakech']).'#contact', false)
@@ -47,8 +48,12 @@ class ServicesAndOffersPagesTest extends TestCase
                 'Diamond', 'Domiciliation Corporate Premium et représentation complète',
             ])
             ->assertSee('<table', false)
+            ->assertSee('aria-label="Comparaison mobile des offres"', false)
             ->assertSee('En option')
+            ->assertSee('Non inclus')
             ->assertSee('Quota mensuel selon les conditions de l’offre')
+            ->assertSee('Quelle offre correspond à mon besoin ?')
+            ->assertSee('Équilibre entre image et gestion')
             ->assertSee(route('home', ['offre' => 'Golden']).'#contact', false);
     }
 
@@ -124,7 +129,9 @@ class ServicesAndOffersPagesTest extends TestCase
 
         $this->get(route('home'))
             ->assertSee('Découvrir tous nos services')
-            ->assertSee('Comparer les offres');
+            ->assertSee('Comparer les offres')
+            ->assertSee('Essentiel')
+            ->assertSee('Premium');
     }
 
     public function test_sitemap_lists_services_and_offers(): void
