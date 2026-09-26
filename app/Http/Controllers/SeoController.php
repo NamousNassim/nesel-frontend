@@ -7,12 +7,25 @@ use Illuminate\Http\Response;
 
 class SeoController extends Controller
 {
+    /**
+     * Built in PHP rather than Blade: a "<?xml" declaration inside a template
+     * breaks on servers where short_open_tag is enabled.
+     */
     public function sitemap(): Response
     {
-        $urls = array_map(Seo::route(...), Seo::INDEXABLE_ROUTES);
+        $urls = array_map(
+            fn (string $routeName): string => '    <url>'."\n".'        <loc>'.e(Seo::route($routeName)).'</loc>'."\n".'    </url>',
+            Seo::INDEXABLE_ROUTES,
+        );
 
-        return response()
-            ->view('sitemap', ['urls' => $urls])
+        $xml = implode("\n", [
+            '<?xml version="1.0" encoding="UTF-8"?>',
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+            ...$urls,
+            '</urlset>',
+        ])."\n";
+
+        return response($xml)
             ->header('Content-Type', 'application/xml; charset=UTF-8');
     }
 
