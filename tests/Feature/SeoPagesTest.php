@@ -104,9 +104,10 @@ class SeoPagesTest extends TestCase
 
     public function test_local_business_data_is_only_rendered_once_an_address_is_configured(): void
     {
+        config()->set('business.locations.marrakech.street_address', null);
+
         $this->get(route('domiciliation.marrakech'))
-            ->assertDontSee('"@type":"LocalBusiness"', false)
-            ->assertSee('[À compléter : adresse Marrakech]');
+            ->assertDontSee('"@type":"LocalBusiness"', false);
 
         config()->set('business.locations.marrakech.street_address', '1 rue Exemple');
 

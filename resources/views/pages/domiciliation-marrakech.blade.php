@@ -157,17 +157,29 @@
                 <div>
                     <h3 class="text-2xl font-black tracking-[-0.03em]">Votre adresse à Marrakech</h3>
                     <p class="mt-4 text-base leading-7 text-slate-600">
-                        @if (filled($location['street_address']))
-                            {{ $location['street_address'] }}, {{ $location['postal_code'] }} {{ $location['locality'] }}, Maroc
-                        @else
-                            <span class="rounded bg-nesel-gold/25 px-1.5 py-0.5 font-mono text-sm text-nesel-navy">[À compléter : adresse Marrakech]</span>
-                        @endif
+                        {{ $location['map_query'] }}
                     </p>
                     <p class="mt-4 text-base leading-7 text-slate-600">
                         Cette adresse figurera sur vos statuts, vos factures et vos échanges avec l’administration et vos partenaires.
                     </p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section id="localisation" class="scroll-mt-24 py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+            <div data-reveal>
+                <p class="section-kicker">Localisation</p>
+                <h2 class="section-title mt-4">Où nous trouver à Marrakech</h2>
+            </div>
+            <x-google-map
+                class="mt-12"
+                :name="$location['name']"
+                :address="$location['map_query']"
+                :place-id="$location['google_place_id']"
+                title="Localisation du bureau Nesel à Marrakech"
+            />
         </div>
     </section>
 

@@ -169,11 +169,7 @@
                 <div class="bg-white p-8 shadow-[0_24px_80px_rgba(6,24,50,0.08)] sm:p-10" data-reveal>
                     <h3 class="text-2xl font-black tracking-[-0.03em]">Votre adresse à Casablanca</h3>
                     <p class="mt-4 text-base leading-7 text-slate-600">
-                        @if (filled($location['street_address']))
-                            {{ $location['street_address'] }}, {{ $location['postal_code'] }} {{ $location['locality'] }}, Maroc
-                        @else
-                            <span class="rounded bg-nesel-gold/25 px-1.5 py-0.5 font-mono text-sm text-nesel-navy">[À compléter : adresse Casablanca]</span>
-                        @endif
+                        {{ $location['map_query'] }}
                     </p>
 
                     <h3 class="mt-10 text-2xl font-black tracking-[-0.03em]">Préparer votre dossier</h3>
@@ -185,6 +181,22 @@
                     </p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section id="localisation" class="scroll-mt-24 bg-white py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+            <div data-reveal>
+                <p class="section-kicker">Localisation</p>
+                <h2 class="section-title mt-4">Où nous trouver à Casablanca</h2>
+            </div>
+            <x-google-map
+                class="mt-12"
+                :name="$location['name']"
+                :address="$location['map_query']"
+                :place-id="$location['google_place_id']"
+                title="Localisation du bureau Nesel à Casablanca"
+            />
         </div>
     </section>
 
