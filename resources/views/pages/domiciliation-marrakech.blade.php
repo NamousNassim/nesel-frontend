@@ -144,6 +144,11 @@
                 </article>
             </div>
 
+            <p class="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-sm font-bold" data-reveal>
+                <a href="{{ route('services') }}" class="border-b border-nesel-red pb-1 text-nesel-red hover:text-red-700">Découvrez l’ensemble de nos services de domiciliation</a>
+                <a href="{{ route('offers') }}" class="border-b border-nesel-red pb-1 text-nesel-red hover:text-red-700">Comparer les offres Silver, Golden et Diamond</a>
+            </p>
+
             <div class="mt-16 grid gap-10 lg:grid-cols-2 lg:gap-20" data-reveal>
                 <div>
                     <h3 class="text-2xl font-black tracking-[-0.03em]">Comment fonctionne la domiciliation ?</h3>

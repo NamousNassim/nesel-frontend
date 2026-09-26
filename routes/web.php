@@ -5,6 +5,8 @@ use App\Http\Controllers\SeoController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'pages.home')->name('home');
+Route::view('/services', 'pages.services')->name('services');
+Route::view('/offres', 'pages.offres')->name('offers');
 Route::view('/domiciliation-marrakech', 'pages.domiciliation-marrakech')->name('domiciliation.marrakech');
 Route::view('/domiciliation-casablanca', 'pages.domiciliation-casablanca')->name('domiciliation.casablanca');
 

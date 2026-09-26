@@ -21,6 +21,8 @@ class SeoPagesTest extends TestCase
     {
         return [
             'home' => ['/', 'Domiciliation d’entreprise au Maroc | Marrakech &amp; Casablanca | Nesel'],
+            'services' => ['/services', 'Services de domiciliation et accompagnement d’entreprise | Nesel'],
+            'offers' => ['/offres', 'Offres de domiciliation Silver, Golden et Diamond | Nesel'],
             'marrakech' => ['/domiciliation-marrakech', 'Domiciliation d’entreprise à Marrakech | Nesel'],
             'casablanca' => ['/domiciliation-casablanca', 'Domiciliation d’entreprise à Casablanca | Nesel'],
         ];

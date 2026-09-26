@@ -164,6 +164,10 @@
                             <p class="mt-2 text-sm leading-6 text-slate-600">Une équipe locale vous guide dans les étapes administratives liées à votre domiciliation.</p>
                         </li>
                     </ul>
+                    <p class="mt-8 flex flex-col gap-3 text-sm font-bold">
+                        <a href="{{ route('offers') }}" class="self-start border-b border-nesel-red pb-1 text-nesel-red hover:text-red-700">Comparer les offres Silver, Golden et Diamond</a>
+                        <a href="{{ route('services') }}" class="self-start border-b border-nesel-red pb-1 text-nesel-red hover:text-red-700">Découvrez l’ensemble de nos services de domiciliation</a>
+                    </p>
                 </div>
 
                 <div class="bg-white p-8 shadow-[0_24px_80px_rgba(6,24,50,0.08)] sm:p-10" data-reveal>

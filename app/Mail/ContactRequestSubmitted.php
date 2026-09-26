@@ -19,6 +19,7 @@ class ContactRequestSubmitted extends Mailable
         public readonly string $phone,
         public readonly string $city,
         public readonly ?string $details,
+        public readonly ?string $offer = null,
     ) {}
 
     /**

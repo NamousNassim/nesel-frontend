@@ -11,6 +11,8 @@ class Seo
      */
     public const INDEXABLE_ROUTES = [
         'home',
+        'services',
+        'offers',
         'domiciliation.marrakech',
         'domiciliation.casablanca',
     ];

@@ -74,6 +74,73 @@ class StructuredData
     }
 
     /**
+     * Service nodes for the services page, from the same data as the visible cards.
+     *
+     * @param  list<array{id: string, title: string, intro: string}>  $services
+     * @return array<string, mixed>
+     */
+    public static function services(array $services): array
+    {
+        return [
+            '@context' => 'https://schema.org',
+            '@graph' => array_map(fn (array $service): array => [
+                '@type' => 'Service',
+                '@id' => Seo::route('services').'#'.$service['id'],
+                'name' => $service['title'],
+                'description' => $service['intro'],
+                'url' => Seo::route('services').'#'.$service['id'],
+                'provider' => ['@id' => Seo::url('/#organization')],
+                'areaServed' => self::areaServed(),
+            ], $services),
+        ];
+    }
+
+    /**
+     * Domiciliation service with its three packages as an OfferCatalog.
+     * No price is included: none is confirmed.
+     *
+     * @param  list<array{name: string, subtitle: string, description: string, included: list<string>}>  $offers
+     * @return array<string, mixed>
+     */
+    public static function offerCatalog(array $offers): array
+    {
+        return [
+            '@context' => 'https://schema.org',
+            '@type' => 'Service',
+            'name' => 'Domiciliation d’entreprise',
+            'url' => Seo::route('offers'),
+            'provider' => ['@id' => Seo::url('/#organization')],
+            'areaServed' => self::areaServed(),
+            'hasOfferCatalog' => [
+                '@type' => 'OfferCatalog',
+                'name' => 'Offres de domiciliation Nesel',
+                'itemListElement' => array_map(fn (array $offer): array => [
+                    '@type' => 'Offer',
+                    'name' => $offer['name'],
+                    'description' => $offer['description'],
+                    'url' => Seo::route('offers').'#offre-'.strtolower($offer['name']),
+                    'itemOffered' => [
+                        '@type' => 'Service',
+                        'name' => "{$offer['name']} — {$offer['subtitle']}",
+                        'description' => implode(', ', $offer['included']).'.',
+                    ],
+                ], $offers),
+            ],
+        ];
+    }
+
+    /**
+     * @return list<array{'@type': string, name: string}>
+     */
+    private static function areaServed(): array
+    {
+        return array_values(array_map(fn (array $location): array => [
+            '@type' => 'City',
+            'name' => $location['locality'],
+        ], config('business.locations')));
+    }
+
+    /**
      * FAQPage node generated from the same data as the visible FAQ.
      *
      * Kept because it accurately describes visible content, but Google only

@@ -9,6 +9,13 @@ use Illuminate\Validation\Rule;
 class StoreContactRequest extends FormRequest
 {
     /**
+     * Offer choices accepted by the contact form ("Conseil" = wants advice).
+     *
+     * @var list<string>
+     */
+    public const OFFERS = ['Silver', 'Golden', 'Diamond', 'Conseil'];
+
+    /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
@@ -27,6 +34,7 @@ class StoreContactRequest extends FormRequest
             'name' => ['required', 'string', 'min:2', 'max:100'],
             'phone' => ['required', 'string', 'regex:/^[0-9+().\s-]{8,30}$/'],
             'city' => ['required', 'string', Rule::in(['Marrakech', 'Casablanca'])],
+            'offer' => ['nullable', 'string', Rule::in(self::OFFERS)],
             'message' => ['nullable', 'string', 'max:2000'],
         ];
     }
@@ -46,6 +54,7 @@ class StoreContactRequest extends FormRequest
             'phone.regex' => 'Veuillez indiquer un numéro de téléphone valide.',
             'city.required' => 'Veuillez choisir une ville.',
             'city.in' => 'La ville choisie doit être Marrakech ou Casablanca.',
+            'offer.in' => 'Veuillez choisir une offre proposée.',
             'message.max' => 'Votre message ne peut pas dépasser 2 000 caractères.',
         ];
     }

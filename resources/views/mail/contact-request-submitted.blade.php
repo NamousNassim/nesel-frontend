@@ -25,6 +25,12 @@
                             <td style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; color: #64748b; vertical-align: top;">Ville souhaitée</td>
                             <td style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; font-weight: 700; vertical-align: top;">{{ $city }}</td>
                         </tr>
+                        @if ($offer)
+                            <tr>
+                                <td style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; color: #64748b; vertical-align: top;">Offre souhaitée</td>
+                                <td style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; font-weight: 700; vertical-align: top;">{{ $offer === 'Conseil' ? 'Souhaite être conseillé' : $offer }}</td>
+                            </tr>
+                        @endif
                     </table>
 
                     <h2 style="margin: 28px 0 8px; font-size: 16px;">Besoin exprimé</h2>

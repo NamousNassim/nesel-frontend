@@ -59,6 +59,10 @@
                     <p class="section-kicker">Votre quotidien, simplifié</p>
                     <h2 class="section-title mt-4">Bien plus qu’une adresse.</h2>
                     <p class="mt-6 max-w-md text-base leading-7 text-slate-600">Nesel prend en charge l’essentiel pour vous laisser avancer sur ce qui compte : votre activité.</p>
+                    <a href="{{ route('services') }}" class="mt-8 inline-flex items-center gap-2 border-b border-nesel-red pb-1 text-sm font-bold text-nesel-red transition hover:text-red-700">
+                        Découvrir tous nos services
+                        <span aria-hidden="true">→</span>
+                    </a>
                 </div>
 
                 <div class="grid border-t border-slate-300 sm:grid-cols-2" data-reveal>
@@ -137,6 +141,31 @@
         </div>
     </section>
 
+    <section id="offres" class="scroll-mt-24 py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+            <div class="flex flex-col justify-between gap-6 sm:flex-row sm:items-end" data-reveal>
+                <div>
+                    <p class="section-kicker">Nos offres</p>
+                    <h2 class="section-title mt-4">Trois niveaux de service, selon vos besoins.</h2>
+                </div>
+                <a href="{{ route('offers') }}" class="inline-flex items-center gap-2 border-b border-nesel-red pb-1 text-sm font-bold text-nesel-red transition hover:text-red-700">
+                    Comparer les offres
+                    <span aria-hidden="true">→</span>
+                </a>
+            </div>
+
+            <div class="mt-14 grid gap-px border border-slate-300 bg-slate-300 md:grid-cols-3" data-reveal>
+                @foreach (\App\Support\Catalog::offers() as $offer)
+                    <article class="bg-nesel-ivory p-7 sm:p-9">
+                        <h3 class="text-2xl font-black tracking-[-0.04em]">{{ $offer['name'] }}</h3>
+                        <p class="mt-1 text-sm font-bold text-nesel-red">{{ $offer['subtitle'] }}</p>
+                        <p class="mt-4 text-sm leading-6 text-slate-600">{{ $offer['teaser'] }}</p>
+                    </article>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
     <section id="demarche" class="scroll-mt-24 bg-nesel-navy py-24 text-white sm:py-32">
         <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
             <div class="grid gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
@@ -207,6 +236,18 @@
                         </select>
                         @error('city')
                             <span id="city-error" class="normal-case tracking-normal text-red-700">{{ $message }}</span>
+                        @enderror
+                    </label>
+                    <label class="field-label sm:col-span-2">
+                        Offre souhaitée <span class="font-semibold normal-case tracking-normal text-slate-400">(facultatif)</span>
+                        <select name="offer" class="field-input @error('offer') border-nesel-red @enderror" aria-describedby="offer-error">
+                            <option value="">Pas de préférence</option>
+                            @foreach (['Silver' => 'Silver', 'Golden' => 'Golden', 'Diamond' => 'Diamond', 'Conseil' => 'Je souhaite être conseillé'] as $offerValue => $offerLabel)
+                                <option value="{{ $offerValue }}" @selected(old('offer', request()->query('offre')) === $offerValue)>{{ $offerLabel }}</option>
+                            @endforeach
+                        </select>
+                        @error('offer')
+                            <span id="offer-error" class="normal-case tracking-normal text-red-700">{{ $message }}</span>
                         @enderror
                     </label>
                     <label class="field-label sm:col-span-2">

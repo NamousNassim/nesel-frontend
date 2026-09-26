@@ -13,6 +13,14 @@
 
     // On the homepage, keep section links as pure fragments for in-page scrolling.
     $homeUrl = request()->routeIs('home') ? '' : route('home');
+
+    $navigationLinks = [
+        'home' => 'Accueil',
+        'services' => 'Services',
+        'offers' => 'Offres',
+        'domiciliation.marrakech' => 'Marrakech',
+        'domiciliation.casablanca' => 'Casablanca',
+    ];
 @endphp
 <!DOCTYPE html>
 <html lang="fr">
@@ -70,12 +78,11 @@
                     </span>
                 </a>
 
-                <nav class="hidden items-center gap-8 text-sm font-semibold text-slate-600 lg:flex" aria-label="Navigation principale">
-                    <a href="{{ $homeUrl }}#services" class="transition hover:text-nesel-red">Services</a>
-                    <a href="{{ route('domiciliation.marrakech') }}" @class(['transition hover:text-nesel-red', 'text-nesel-red' => request()->routeIs('domiciliation.marrakech')])>Marrakech</a>
-                    <a href="{{ route('domiciliation.casablanca') }}" @class(['transition hover:text-nesel-red', 'text-nesel-red' => request()->routeIs('domiciliation.casablanca')])>Casablanca</a>
-                    <a href="{{ $homeUrl }}#demarche" class="transition hover:text-nesel-red">Comment ça marche</a>
-                    <a href="{{ $homeUrl }}#contact" class="inline-flex min-h-11 items-center justify-center rounded-md bg-nesel-red px-5 text-white transition hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-nesel-red focus:ring-offset-2">Être rappelé</a>
+                <nav class="hidden items-center gap-7 text-sm font-semibold text-slate-600 lg:flex" aria-label="Navigation principale">
+                    @foreach ($navigationLinks as $routeName => $label)
+                        <a href="{{ route($routeName) }}" @if (request()->routeIs($routeName)) aria-current="page" @endif @class(['transition hover:text-nesel-red', 'text-nesel-red' => request()->routeIs($routeName)])>{{ $label }}</a>
+                    @endforeach
+                    <a href="{{ $homeUrl }}#contact" class="inline-flex min-h-11 items-center justify-center rounded-md bg-nesel-red px-5 text-white transition hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-nesel-red focus:ring-offset-2">Contact</a>
                 </nav>
 
                 <button id="menu-toggle" type="button" class="flex size-11 items-center justify-center rounded-md border border-slate-200 text-nesel-navy lg:hidden" aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
@@ -87,11 +94,10 @@
 
             <nav id="mobile-menu" class="hidden border-t border-slate-200 bg-white px-5 py-5 lg:hidden" aria-label="Navigation mobile">
                 <div class="mx-auto flex max-w-7xl flex-col gap-1 text-sm font-semibold">
-                    <a href="{{ $homeUrl }}#services" class="rounded-md px-3 py-3 hover:bg-slate-50">Services</a>
-                    <a href="{{ route('domiciliation.marrakech') }}" class="rounded-md px-3 py-3 hover:bg-slate-50">Domiciliation à Marrakech</a>
-                    <a href="{{ route('domiciliation.casablanca') }}" class="rounded-md px-3 py-3 hover:bg-slate-50">Domiciliation à Casablanca</a>
-                    <a href="{{ $homeUrl }}#demarche" class="rounded-md px-3 py-3 hover:bg-slate-50">Comment ça marche</a>
-                    <a href="{{ $homeUrl }}#contact" class="mt-2 rounded-md bg-nesel-red px-4 py-3 text-center text-white">Être rappelé</a>
+                    @foreach ($navigationLinks as $routeName => $label)
+                        <a href="{{ route($routeName) }}" @if (request()->routeIs($routeName)) aria-current="page" @endif @class(['rounded-md px-3 py-3 hover:bg-slate-50', 'text-nesel-red' => request()->routeIs($routeName)])>{{ $label }}</a>
+                    @endforeach
+                    <a href="{{ $homeUrl }}#contact" class="mt-2 rounded-md bg-nesel-red px-4 py-3 text-center text-white">Contact</a>
                 </div>
             </nav>
         </header>
@@ -110,6 +116,8 @@
                 <nav aria-label="Liens de pied de page">
                     <ul class="flex flex-wrap gap-x-6 gap-y-2 font-semibold">
                         <li><a href="{{ route('home') }}" class="transition hover:text-nesel-red">Accueil</a></li>
+                        <li><a href="{{ route('services') }}" class="transition hover:text-nesel-red">Services</a></li>
+                        <li><a href="{{ route('offers') }}" class="transition hover:text-nesel-red">Offres</a></li>
                         <li><a href="{{ route('domiciliation.marrakech') }}" class="transition hover:text-nesel-red">Domiciliation à Marrakech</a></li>
                         <li><a href="{{ route('domiciliation.casablanca') }}" class="transition hover:text-nesel-red">Domiciliation à Casablanca</a></li>
                     </ul>

@@ -19,6 +19,7 @@ class ContactRequestController extends Controller
                 phone: $contactRequest['phone'],
                 city: $contactRequest['city'],
                 details: $contactRequest['message'] ?? null,
+                offer: $contactRequest['offer'] ?? null,
             ),
         );
 
