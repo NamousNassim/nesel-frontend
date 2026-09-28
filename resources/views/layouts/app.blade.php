@@ -51,6 +51,19 @@
 
         <x-json-ld :data="StructuredData::organization()" />
         @stack('structured-data')
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18474666544"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+            gtag('config', 'AW-18474666544');
+        </script>
     </head>
     <body class="bg-nesel-ivory text-nesel-navy antialiased">
         <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-sm">
