@@ -1,5 +1,5 @@
 @extends('layouts.app', [
-    'title' => 'Domiciliation d’entreprise au Maroc | Marrakech & Casablanca | Nesel',
+    'title' => 'Domiciliation d’entreprise à Marrakech et Casablanca | Nesel',
     'description' => 'Nesel domicilie votre entreprise à Marrakech ou à Casablanca : adresse professionnelle pour votre siège social, gestion du courrier et accompagnement par une équipe locale.',
 ])
 
@@ -38,7 +38,7 @@
                 <div class="absolute inset-0 bg-nesel-navy/10" aria-hidden="true"></div>
                 <div class="absolute bottom-6 left-5 right-5 border-l-4 border-nesel-red bg-white p-5 shadow-2xl sm:bottom-10 sm:left-10 sm:right-auto sm:max-w-xs">
                     <p class="text-xs font-black uppercase tracking-[0.18em] text-nesel-red">Simple & rapide</p>
-                    <p class="mt-2 text-lg font-extrabold leading-snug text-nesel-navy">Votre domiciliation peut commencer dès que votre dossier est validé.</p>
+                    <p class="mt-2 text-lg font-extrabold leading-snug text-nesel-navy">Votre domiciliation peut commencer après vérification des éléments nécessaires.</p>
                 </div>
             </div>
         </div>
@@ -73,7 +73,7 @@
                             <div class="mt-auto pt-20">
                                 <p class="text-xs font-black uppercase tracking-[0.18em] text-nesel-gold">Domiciliation</p>
                                 <h3 class="mt-4 max-w-lg text-3xl font-black tracking-[-0.045em] sm:text-4xl">Une adresse professionnelle qui installe votre crédibilité.</h3>
-                                <p class="mt-5 max-w-lg text-base leading-7 text-white/65">Installez le siège de votre entreprise à Marrakech ou Casablanca, avec les documents et l’accompagnement nécessaires.</p>
+                                <p class="mt-5 max-w-lg text-base leading-7 text-white/65">Installez le siège de votre entreprise à Marrakech ou Casablanca, avec les documents liés à la domiciliation et un accompagnement dédié.</p>
                                 <a href="{{ route('services') }}#domiciliation" class="mt-8 inline-flex items-center gap-2 text-sm font-bold text-white">Découvrir la domiciliation <span class="transition group-hover:translate-x-1" aria-hidden="true">→</span></a>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                     <article class="group border border-slate-200 bg-white p-7 transition hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(6,24,50,0.09)] sm:p-8 lg:col-span-5">
                         <div class="flex items-start justify-between gap-5"><span class="flex size-11 items-center justify-center bg-red-50 text-nesel-red"><x-service-icon name="briefcase" class="size-6" /></span><span class="text-xs font-black text-slate-300">03</span></div>
                         <h3 class="mt-8 text-xl font-black tracking-tight text-nesel-navy">Des démarches plus claires</h3>
-                        <p class="mt-3 text-sm leading-6 text-slate-600">Création, formalités et suivi administratif : une équipe locale vous guide dans les étapes clés.</p>
+                        <p class="mt-3 text-sm leading-6 text-slate-600">Création, préparation du dossier et suivi administratif : une équipe locale vous guide dans les étapes clés.</p>
                     </article>
             </div>
         </div>
@@ -190,7 +190,7 @@
                     </li>
                     <li class="step-row">
                         <span>03</span>
-                        <div><h3>Activez votre adresse</h3><p>Après validation du dossier, votre domiciliation est mise en place.</p></div>
+                        <div><h3>Activez votre adresse</h3><p>Après vérification des éléments nécessaires, votre service de domiciliation est mis en place.</p></div>
                     </li>
                 </ol>
             </div>
@@ -269,6 +269,7 @@
                     <span aria-hidden="true">→</span>
                 </button>
                 <p class="mt-4 text-center text-xs leading-5 text-slate-400">En envoyant ce formulaire, vous acceptez d’être contacté par l’équipe Nesel.</p>
+                <p class="mt-4 border-t border-slate-200 pt-4 text-sm leading-6 text-slate-600">{{ config('business.private_company_disclaimer') }}</p>
             </form>
         </div>
     </section>

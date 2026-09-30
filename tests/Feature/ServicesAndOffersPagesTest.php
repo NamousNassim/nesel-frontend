@@ -31,6 +31,8 @@ class ServicesAndOffersPagesTest extends TestCase
                 'Services complémentaires pour investisseurs et entrepreneurs',
             ])
             ->assertSeeInOrder(['Opérations', 'Espaces professionnels', 'Accompagnement business'])
+            ->assertSee('Préparation des informations et documents nécessaires')
+            ->assertSee('Mise en relation avec des professionnels partenaires lorsque nécessaire')
             ->assertSee('href="'.route('offers').'"', false)
             ->assertSee('Découvrir nos offres de domiciliation')
             ->assertSee(route('home', ['ville' => 'Marrakech']).'#contact', false)
@@ -45,13 +47,15 @@ class ServicesAndOffersPagesTest extends TestCase
             ->assertSeeInOrder([
                 'Silver', 'Domiciliation administrative essentielle',
                 'Golden', 'Domiciliation exécutive et gestion administrative renforcée',
-                'Diamond', 'Domiciliation Corporate Premium et représentation complète',
+                'Diamond', 'Domiciliation Corporate Premium et accompagnement renforcé',
             ])
             ->assertSee('<table', false)
             ->assertSee('aria-label="Comparaison mobile des offres"', false)
             ->assertSee('En option')
             ->assertSee('Non inclus')
             ->assertSee('Quota mensuel selon les conditions de l’offre')
+            ->assertSee('Accompagnement de base à la création et à l’organisation de l’entreprise')
+            ->assertSee('Coordination des démarches liées à l’évolution de l’entreprise')
             ->assertSee('Quelle offre correspond à mon besoin ?')
             ->assertSee('Équilibre entre image et gestion')
             ->assertSee(route('home', ['offre' => 'Golden']).'#contact', false);

@@ -32,7 +32,7 @@
         ],
         [
             'question' => 'En combien de temps ma domiciliation est-elle active ?',
-            'answer' => 'Votre domiciliation peut commencer dès que votre dossier est validé. Plus vos documents sont complets au départ, plus la mise en place est rapide.',
+            'answer' => 'Le délai de mise en place dépend de votre situation et des éléments nécessaires au service de domiciliation. Votre conseiller vous indique les prochaines étapes après vérification de votre dossier.',
         ],
         [
             'question' => 'Comment démarrer ma demande ?',
@@ -125,7 +125,7 @@
                 <article class="service-item sm:border-r sm:border-slate-300">
                     <span class="service-number">01</span>
                     <h3>Une adresse de siège social</h3>
-                    <p>Une adresse professionnelle à Marrakech pour immatriculer votre entreprise et l’indiquer sur vos documents commerciaux.</p>
+                    <p>Une adresse professionnelle à Marrakech pour établir le siège social de votre entreprise et l’indiquer sur vos documents commerciaux.</p>
                 </article>
                 <article class="service-item lg:border-r lg:border-slate-300">
                     <span class="service-number">02</span>
@@ -153,7 +153,7 @@
                 <div>
                     <h3 class="text-2xl font-black tracking-[-0.03em]">Comment fonctionne la domiciliation ?</h3>
                     <p class="mt-4 text-base leading-7 text-slate-600">
-                        Le principe est simple : votre entreprise est enregistrée à l’adresse fournie par Nesel, qui devient son siège. Vous exercez votre activité là où vous le souhaitez — chez vos clients, à domicile ou en déplacement — et le courrier officiel de votre société arrive chez nous.
+                        Le principe est simple : le siège de votre entreprise est établi à l’adresse fournie par Nesel. Vous exercez votre activité là où vous le souhaitez — chez vos clients, à domicile ou en déplacement — et le courrier professionnel de votre société arrive chez nous.
                     </p>
                     <p class="mt-4 text-base leading-7 text-slate-600">
                         Les conditions de votre domiciliation (services inclus, durée, tarif) sont détaillées dans la proposition que nous vous adressons, sans frais cachés.
@@ -210,7 +210,7 @@
                     </li>
                     <li class="step-row">
                         <span>04</span>
-                        <div><h3>Votre adresse est activée</h3><p>Après validation du dossier, votre domiciliation à Marrakech est mise en place.</p></div>
+                        <div><h3>Votre adresse est activée</h3><p>Après vérification des éléments nécessaires, votre service de domiciliation à Marrakech est mis en place.</p></div>
                     </li>
                 </ol>
             </div>

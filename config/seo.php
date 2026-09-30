@@ -15,4 +15,27 @@ return [
 
     'indexing_enabled' => (bool) env('SEO_INDEXING_ENABLED', false),
 
+    'keywords' => [
+        'domiciliation entreprise',
+        'domiciliation entreprise Marrakech',
+        'domiciliation entreprise Casablanca',
+        'domiciliation société Maroc',
+        'adresse siège social',
+        'adresse de siège social entreprise',
+        'domiciliation siège social',
+        'adresse professionnelle entreprise',
+        'adresse professionnelle Marrakech',
+        'adresse professionnelle Casablanca',
+        'siège social Marrakech',
+        'siège social Casablanca',
+        'création entreprise Maroc',
+        'création entreprise Marrakech',
+        'création entreprise Casablanca',
+        'création société Maroc',
+        'création société Marrakech',
+        'création société Casablanca',
+        'accompagnement création entreprise',
+        'bureau professionnel Marrakech',
+    ],
+
 ];

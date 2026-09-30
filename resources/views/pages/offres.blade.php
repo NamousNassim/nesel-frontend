@@ -42,7 +42,7 @@
                         Nos offres de domiciliation
                     </h1>
                     <p class="mt-7 max-w-2xl text-lg leading-8 text-slate-300">
-                        Nesel propose trois niveaux de service, à Marrakech comme à Casablanca. Ils se distinguent par l’étendue de l’accompagnement administratif et de la représentation dont votre entreprise a besoin. Chaque offre fait l’objet d’une proposition personnalisée.
+                        Nesel propose trois niveaux de service, à Marrakech comme à Casablanca. Ils se distinguent par l’étendue de l’accompagnement administratif et du support dont votre entreprise a besoin. Chaque offre fait l’objet d’une proposition personnalisée.
                     </p>
                     <div class="mt-9 flex flex-col gap-3 sm:flex-row">
                         <a href="#offres" class="inline-flex min-h-13 items-center justify-center gap-2 rounded-md bg-nesel-red px-7 text-sm font-bold text-white transition hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-white">

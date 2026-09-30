@@ -17,6 +17,8 @@ return [
 
     'name' => 'Nesel',
 
+    'private_company_disclaimer' => 'Nesel est une société privée de domiciliation et de services aux entreprises. Nesel n’est pas un organisme public et n’est affiliée à aucune administration publique.',
+
     /** Paths relative to the public directory. */
     'logo' => 'nesel-logo.jpeg',
 

@@ -30,6 +30,7 @@
 
         <title>{{ $title }}</title>
         <meta name="description" content="{{ $description }}">
+        <meta name="keywords" content="{{ implode(', ', config('seo.keywords')) }}">
         <meta name="robots" content="{{ config('seo.indexing_enabled') ? 'index, follow' : 'noindex, nofollow' }}">
         <link rel="canonical" href="{{ $canonicalUrl }}">
 
@@ -107,22 +108,25 @@
         </main>
 
         <footer class="border-t border-slate-200 bg-white">
-            <div class="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-8 text-sm text-slate-500 lg:flex-row lg:items-center lg:justify-between sm:px-8 lg:px-10">
-                <div class="flex items-center gap-3">
-                    <x-picture :src="config('business.logo')" alt="Logo Nesel" width="36" height="36" class="size-9 rounded-md object-cover" loading="lazy" />
-                    <strong class="text-nesel-navy">NESEL</strong>
-                    <span>· Domiciliation d’entreprises</span>
+            <div class="mx-auto max-w-7xl px-5 py-8 text-sm text-slate-500 sm:px-8 lg:px-10">
+                <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+                    <div class="flex items-center gap-3">
+                        <x-picture :src="config('business.logo')" alt="Logo Nesel" width="36" height="36" class="size-9 rounded-md object-cover" loading="lazy" />
+                        <strong class="text-nesel-navy">NESEL</strong>
+                        <span>· Domiciliation d’entreprises</span>
+                    </div>
+                    <nav aria-label="Liens de pied de page">
+                        <ul class="flex flex-wrap gap-x-6 gap-y-2 font-semibold">
+                            <li><a href="{{ route('home') }}" class="transition hover:text-nesel-red">Accueil</a></li>
+                            <li><a href="{{ route('services') }}" class="transition hover:text-nesel-red">Services</a></li>
+                            <li><a href="{{ route('offers') }}" class="transition hover:text-nesel-red">Offres</a></li>
+                            <li><a href="{{ route('domiciliation.marrakech') }}" class="transition hover:text-nesel-red">Domiciliation à Marrakech</a></li>
+                            <li><a href="{{ route('domiciliation.casablanca') }}" class="transition hover:text-nesel-red">Domiciliation à Casablanca</a></li>
+                        </ul>
+                    </nav>
+                    <p>© {{ date('Y') }} Nesel. Marrakech · Casablanca</p>
                 </div>
-                <nav aria-label="Liens de pied de page">
-                    <ul class="flex flex-wrap gap-x-6 gap-y-2 font-semibold">
-                        <li><a href="{{ route('home') }}" class="transition hover:text-nesel-red">Accueil</a></li>
-                        <li><a href="{{ route('services') }}" class="transition hover:text-nesel-red">Services</a></li>
-                        <li><a href="{{ route('offers') }}" class="transition hover:text-nesel-red">Offres</a></li>
-                        <li><a href="{{ route('domiciliation.marrakech') }}" class="transition hover:text-nesel-red">Domiciliation à Marrakech</a></li>
-                        <li><a href="{{ route('domiciliation.casablanca') }}" class="transition hover:text-nesel-red">Domiciliation à Casablanca</a></li>
-                    </ul>
-                </nav>
-                <p>© {{ date('Y') }} Nesel. Marrakech · Casablanca</p>
+                <p class="mt-6 border-t border-slate-200 pt-5 leading-6 text-slate-600">{{ config('business.private_company_disclaimer') }}</p>
             </div>
         </footer>
 

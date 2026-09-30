@@ -20,7 +20,7 @@ class SeoPagesTest extends TestCase
     public static function publicPages(): array
     {
         return [
-            'home' => ['/', 'Domiciliation d’entreprise au Maroc | Marrakech &amp; Casablanca | Nesel'],
+            'home' => ['/', 'Domiciliation d’entreprise à Marrakech et Casablanca | Nesel'],
             'services' => ['/services', 'Services de domiciliation et accompagnement d’entreprise | Nesel'],
             'offers' => ['/offres', 'Offres de domiciliation Silver, Golden et Diamond | Nesel'],
             'marrakech' => ['/domiciliation-marrakech', 'Domiciliation d’entreprise à Marrakech | Nesel'],
@@ -32,24 +32,28 @@ class SeoPagesTest extends TestCase
     public function test_public_page_renders_its_seo_metadata(string $path, string $title): void
     {
         $canonicalUrl = 'https://nesel.test'.$path;
+        $keywords = 'domiciliation entreprise, domiciliation entreprise Marrakech, domiciliation entreprise Casablanca, domiciliation société Maroc, adresse siège social, adresse de siège social entreprise, domiciliation siège social, adresse professionnelle entreprise, adresse professionnelle Marrakech, adresse professionnelle Casablanca, siège social Marrakech, siège social Casablanca, création entreprise Maroc, création entreprise Marrakech, création entreprise Casablanca, création société Maroc, création société Marrakech, création société Casablanca, accompagnement création entreprise, bureau professionnel Marrakech';
 
         $this->get($path)
             ->assertOk()
             ->assertSee("<title>{$title}</title>", false)
+            ->assertSee('<meta name="keywords" content="'.$keywords.'">', false)
             ->assertSee('<link rel="canonical" href="'.$canonicalUrl.'">', false)
             ->assertSee('<meta property="og:url" content="'.$canonicalUrl.'">', false)
             ->assertSee('<meta name="twitter:card" content="summary_large_image">', false)
-            ->assertSee('"@type":"Organization"', false);
+            ->assertSee('"@type":"Organization"', false)
+            ->assertSee(config('business.private_company_disclaimer'))
+            ->assertDontSee('"@type":"Government', false);
     }
 
     #[DataProvider('publicPages')]
-    public function test_public_page_has_exactly_one_h1(string $path): void
+    public function test_public_page_has_exactly_one_h1(string $path, string $_title): void
     {
         $this->assertSame(1, substr_count($this->get($path)->getContent(), '<h1'));
     }
 
     #[DataProvider('publicPages')]
-    public function test_public_page_is_indexable_when_indexing_is_enabled(string $path): void
+    public function test_public_page_is_indexable_when_indexing_is_enabled(string $path, string $_title): void
     {
         config()->set('seo.indexing_enabled', true);
 
@@ -59,7 +63,7 @@ class SeoPagesTest extends TestCase
     }
 
     #[DataProvider('publicPages')]
-    public function test_public_page_is_not_indexable_when_indexing_is_disabled(string $path): void
+    public function test_public_page_is_not_indexable_when_indexing_is_disabled(string $path, string $_title): void
     {
         config()->set('seo.indexing_enabled', false);
 

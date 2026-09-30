@@ -95,7 +95,7 @@
                 <p class="section-kicker">La capitale économique</p>
                 <h2 class="section-title mt-4">Une adresse à Casablanca, sans les contraintes d’un bureau</h2>
                 <p class="mt-6 text-base leading-7 text-slate-600">
-                    Pour beaucoup d’entreprises, la question n’est pas d’avoir des locaux, mais d’avoir la bonne adresse. La domiciliation répond précisément à ce besoin : votre société est enregistrée à Casablanca, tandis que vous organisez votre travail comme vous l’entendez.
+                    Pour beaucoup d’entreprises, la question n’est pas d’avoir des locaux, mais d’avoir la bonne adresse. La domiciliation répond précisément à ce besoin : le siège de votre société est établi à Casablanca, tandis que vous organisez votre travail comme vous l’entendez.
                 </p>
             </div>
 
@@ -222,7 +222,7 @@
                     </li>
                     <li class="step-row">
                         <span>03</span>
-                        <div><h3>L’activation de votre domiciliation</h3><p>Une fois votre dossier validé, votre adresse est active et votre courrier peut nous être adressé.</p></div>
+                        <div><h3>L’activation de votre domiciliation</h3><p>Après vérification des éléments nécessaires, votre adresse est activée pour le service de domiciliation et votre courrier peut nous être adressé.</p></div>
                     </li>
                 </ol>
             </div>
